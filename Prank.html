@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical System Failure (Prank)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        .loading {
+            font-size: 30px;
+            color: #0099FF;
+            font-weight: bold;
+        }
+        .error {
+            font-size: 24px;
+            color: red;
+            margin-top: 20px;
+        }
+        .message {
+            font-size: 18px;
+            color: #007BFF;
+            margin-top: 10px;
+        }
+        .button {
+            background-color: #FF6347;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #FF4500;
+        }
+        .hidden {
+            display: none;
+        }
+        .alert-message {
+            font-size: 16px;
+            color: red;
+        }
+        .final-message {
+            font-size: 22px;
+            color: green;
+        }
+        .error-box {
+            display: none;
+            margin-top: 20px;
+        }
+        .box {
+            width: 60%;
+            padding: 20px;
+            margin: 20px auto;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Critical System Alert</h1>
+    <p class="loading">System Loading...</p>
+    <p class="message">Please wait while your system is being checked...</p>
+    <button class="button" onclick="startPrank()">Start the system recovery process</button>
+
+    <div id="errorBox" class="box error-box">
+        <p class="alert-message">WARNING: Critical system error detected!</p>
+        <p>System is experiencing data corruption...</p>
+        <p>Attempting to recover from malfunction...</p>
+    </div>
+
+    <div id="repairBox" class="box hidden">
+        <p class="message">Repair process initiated. Please do not interrupt...</p>
+        <p class="message">Repair status: 10% completed</p>
+    </div>
+
+    <div id="finalMessageBox" class="box hidden">
+        <p class="final-message">System repair completed! Your computer is now safe!</p>
+        <p class="final-message">This was a prank! 😜</p>
+    </div>
+
+    <script>
+        let count = 0;
+        let loadingText = document.querySelector('.loading');
+        let messageText = document.querySelector('.message');
+        let button = document.querySelector('.button');
+        let errorBox = document.getElementById('errorBox');
+        let repairBox = document.getElementById('repairBox');
+        let finalMessageBox = document.getElementById('finalMessageBox');
+
+        function startPrank() {
+            button.disabled = true; // Disable the button after it's clicked
+            messageText.innerText = "System Recovery Process Started...";
+            loadingText.innerText = "Loading... Please Wait...";
+            
+            // Simulate the initial loading sequence
+            setTimeout(function() {
+                loadingText.innerText = "Checking system integrity...";
+                messageText.innerText = "System found errors. Attempting repair...";
+                errorBox.style.display = 'block'; // Show error message
+            }, 3000);
+
+            // Simulate the repair process
+            setTimeout(function() {
+                errorBox.style.display = 'none';
+                repairBox.style.display = 'block';
+                repairBox.querySelector('.message').innerText = "Repair process: 20% completed";
+            }, 6000);
+
+            setTimeout(function() {
+                repairBox.querySelector('.message').innerText = "Repair process: 40% completed";
+            }, 9000);
+
+            setTimeout(function() {
+                repairBox.querySelector('.message').innerText = "Repair process: 60% completed";
+            }, 12000);
+
+            setTimeout(function() {
+                repairBox.querySelector('.message').innerText = "Repair process: 80% completed";
+            }, 15000);
+
+            setTimeout(function() {
+                repairBox.querySelector('.message').innerText = "Repair process completed!";
+                setTimeout(function() {
+                    repairBox.style.display = 'none';
+                    finalMessageBox.style.display = 'block';
+                }, 2000);
+            }, 18000);
+
+            // Simulate the "final" recovery message after 20 seconds
+            setTimeout(function() {
+                alert("This is just a prank! Your system is fine!");
+                location.reload(); // Refresh the page after the prank
+            }, 22000);
+        }
+    </script>
+</body>
+</html>
